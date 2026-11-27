@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">AegisPulse</string>
+    <string name="emergency_disclaimer_default">AegisPulse is an AI first-aid &amp; preparedness assistant. It does not replace professional medical advice or official emergency services (911 / 112).</string>
+    <string name="nav_triage">Triage</string>
+    <string name="nav_scene_scan">Scene Scan</string>
+    <string name="nav_vault_logs">Vault &amp; Logs</string>
+    <string name="nav_hybrid_lab">Hybrid Lab</string>
+    <string name="status_online">Online</string>
+    <string name="status_offline">Offline</string>
+    <string name="status_nano_ready">Nano Ready</string>
+    <string name="status_cloud_fallback">Cloud Fallback</string>
+    <string name="status_downloading">Downloading</string>
+    <string name="sign_in_google">Sign in with Google</string>
+    <string name="sign_out">Sign out</string>
+    <string name="cd_toggle_theme">Toggle light or dark theme</string>
+    <string name="cd_voice_input">Dictate emergency scenario</string>
+    <string name="cd_speak_guidance">Read guidance aloud</string>
+    <string name="cd_stop_speaking">Stop audio readout</string>
+    <string name="cd_sos_translator">Open offline SOS phrase translator</string>
+    <string name="sos_phrases_button">SOS Phrases</string>
+    <string name="dial_emergency_button">Dial 112 / 911</string>
+    <string name="cd_dial_emergency">Open phone dialer pre-filled with 112</string>
+</resources>

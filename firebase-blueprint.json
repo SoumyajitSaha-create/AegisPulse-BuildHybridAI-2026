@@ -1,0 +1,149 @@
+{
+  "entities": {
+    "IncidentLog": {
+      "title": "IncidentLog",
+      "description": "A saved emergency triage session, multimodal scene scan assessment, or multi-incident responder brief owned by a signed-in user.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID matching request.auth.uid."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["TRIAGE", "SCENE_SCAN", "RESPONDER_BRIEF"],
+          "description": "Type of emergency entry."
+        },
+        "title": {
+          "type": "string",
+          "description": "Short incident title (1-160 chars)."
+        },
+        "promptSummary": {
+          "type": "string",
+          "description": "User scenario or visual question summary (1-1200 chars)."
+        },
+        "urgencyLevel": {
+          "type": "string",
+          "enum": ["CRITICAL", "HIGH", "MODERATE", "INFO"],
+          "description": "Triaged urgency severity."
+        },
+        "guidanceSummary": {
+          "type": "string",
+          "description": "Primary structured guidance or handoff report body (1-6000 chars)."
+        },
+        "checklistSteps": {
+          "type": "array",
+          "description": "Bounded list of up to 25 actionable checklist step strings."
+        },
+        "doNotDoNotes": {
+          "type": "string",
+          "description": "Optional warning notes of actions to avoid (0-1500 chars)."
+        },
+        "inferenceSource": {
+          "type": "string",
+          "enum": ["ON_DEVICE", "IN_CLOUD", "HYBRID"],
+          "description": "Actual Firebase AI Logic inference source reported by SDK."
+        },
+        "latencyMs": {
+          "type": "integer",
+          "description": "Measured wall-clock inference latency in milliseconds."
+        },
+        "platform": {
+          "type": "string",
+          "enum": ["ANDROID", "WEB"],
+          "description": "Client platform originating the incident log (ANDROID or WEB)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "userId",
+        "category",
+        "title",
+        "promptSummary",
+        "urgencyLevel",
+        "guidanceSummary",
+        "checklistSteps",
+        "inferenceSource",
+        "latencyMs",
+        "platform",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "TelemetryEntry": {
+      "title": "TelemetryEntry",
+      "description": "Immutable hybrid AI routing decision record synced for the authenticated user.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID matching request.auth.uid."
+        },
+        "taskType": {
+          "type": "string",
+          "description": "Label for the AI workflow (1-80 chars)."
+        },
+        "requestedMode": {
+          "type": "string",
+          "enum": ["PREFER_ON_DEVICE", "ONLY_ON_DEVICE", "PREFER_IN_CLOUD", "ONLY_IN_CLOUD"],
+          "description": "InferenceMode requested in OnDeviceConfig."
+        },
+        "actualSource": {
+          "type": "string",
+          "enum": ["ON_DEVICE", "IN_CLOUD"],
+          "description": "Actual response.inferenceSource returned by Firebase AI Logic."
+        },
+        "latencyMs": {
+          "type": "integer",
+          "description": "Measured wall-clock latency in milliseconds."
+        },
+        "promptChars": {
+          "type": "integer",
+          "description": "Character count of prompt sent to HybridAIRouter."
+        },
+        "routingReason": {
+          "type": "string",
+          "description": "Explanation for mode selection or cloud fallback (1-300 chars)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "userId",
+        "taskType",
+        "requestedMode",
+        "actualSource",
+        "latencyMs",
+        "promptChars",
+        "routingReason",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/incidents/{incidentId}": {
+      "schema": {
+        "$ref": "#/entities/IncidentLog"
+      },
+      "description": "Per-user offline-capable emergency incident logs and responder briefs."
+    },
+    "/users/{userId}/telemetry/{logId}": {
+      "schema": {
+        "$ref": "#/entities/TelemetryEntry"
+      },
+      "description": "Per-user hybrid AI routing decision telemetry logs."
+    }
+  }
+}

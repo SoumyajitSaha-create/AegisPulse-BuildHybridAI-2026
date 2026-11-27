@@ -1,0 +1,6 @@
+{
+  "name": "AegisPulse",
+  "description": "Offline-first emergency first-aid, multimodal hazard scanning, and field triage companion powered by Firebase AI Logic Hybrid Inference.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
