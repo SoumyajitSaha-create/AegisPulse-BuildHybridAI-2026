@@ -1,3 +1,7 @@
+**Live Web Command Center:** https://aegispulse-web-command-center.ai.studio  
+**Web App Code:** https://github.com/SoumyajitSaha-create/AegisPulse-Web-BuildHybridAI-2026  
+**Hackathon:** Google #BuildHybridAI 2026 (Firebase AI Logic + Firestore + App Check)
+
 # AegisPulse — Offline-First Emergency, First-Aid & Field Triage Companion
 
 Built for **Google's #BuildHybridAI 2026** hackathon, **AegisPulse** is a native Android emergency first-aid, multimodal hazard inspection, and field triage companion engineered around the **Firebase AI Logic Hybrid Inference SDK** (on-device **Gemini Nano** via AICore + cloud **Gemini 3.5 Flash-Lite** fallback), **Firebase App Check**, **Cloud Firestore** (offline persistent cache), **Firebase Authentication** (Google Sign-In via Jetpack Credential Manager), and **Firebase Remote Config**.
